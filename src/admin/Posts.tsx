@@ -12,10 +12,12 @@ import {
   Show,
   useRecordContext,
   ShowButton,
+  BulkDeleteButton,
   Button,
 } from "react-admin";
 import BackButton from "./BackButton";
-import WithdrawDialog from "./WithdrawDialog";
+import CustomRowButton from "./CustomRowButton";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 
 const postFilters = [
   <TextInput source="q" label="Search" alwaysOn />,
@@ -27,13 +29,23 @@ const PostTitle = () => {
   return <span>Post {record ? `"${record.title}"` : ""}</span>;
 };
 
+const PostBulkActionButtons = () => (
+  <>
+    <Button label="CUSTOM" onClick={() => alert("click custom button!!!")}>
+      <CurrencyExchangeIcon />
+    </Button>
+    {/* default bulk delete action */}
+    <BulkDeleteButton />
+  </>
+);
+
 export const PostList = () => (
   <List filters={postFilters}>
-    <Datagrid>
+    <Datagrid bulkActionButtons={<PostBulkActionButtons />}>
       <TextField source="id" />
       <ReferenceField source="userId" reference="users" />
       <TextField source="title" />
-      <WithdrawDialog />
+      <CustomRowButton />
       <ShowButton />
       <EditButton />
     </Datagrid>

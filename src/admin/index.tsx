@@ -1,7 +1,7 @@
 import React from "react";
 import { Admin, Resource } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-import { UserList } from "./Users";
+import { UserEdit, UserList } from "./Users";
 import { PostShow, PostCreate, PostEdit, PostList } from "./Posts";
 import PostIcon from "@mui/icons-material/Book";
 import UserIcon from "@mui/icons-material/Group";
@@ -16,7 +16,6 @@ const MyAdmin = () => (
     layout={Layout}
     authProvider={authProvider}
     dataProvider={dataProvider}
-    dashboard={Dashboard}
   >
     <Resource
       name="posts"
@@ -29,6 +28,7 @@ const MyAdmin = () => (
     <Resource
       name="users"
       list={UserList}
+      edit={UserEdit}
       recordRepresentation="name"
       icon={UserIcon}
     />

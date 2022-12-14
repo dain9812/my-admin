@@ -1,14 +1,14 @@
 import React, { useCallback, useState } from "react";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useRecordContext } from "react-admin";
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import { useRecordContext, Button } from "react-admin";
 
-const WithdrawDialog = () => {
+const CustomRowButton = () => {
   const [open, setOpen] = useState(false);
   const record = useRecordContext();
 
@@ -22,11 +22,11 @@ const WithdrawDialog = () => {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        withdraw
+      <Button label="CUSTOM" onClick={handleClickOpen}>
+        <QuestionMarkIcon />
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Withdraw</DialogTitle>
+        <DialogTitle>Custom Dialog</DialogTitle>
         <DialogContent>
           <DialogContentText>{record.userId}</DialogContentText>
           <DialogContentText>{record.title}</DialogContentText>
@@ -42,12 +42,12 @@ const WithdrawDialog = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Withdraw</Button>
+          <Button label="Cancel" onClick={handleClose} />
+          <Button label="Submit" onClick={handleClose} />
         </DialogActions>
       </Dialog>
     </div>
   );
 };
 
-export default WithdrawDialog;
+export default CustomRowButton;
