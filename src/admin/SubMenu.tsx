@@ -40,7 +40,7 @@ export const SubMenu = (props: SubMenuProps) => {
           sx={{
             paddingLeft: 2,
             fontSize: "1rem",
-            color: "rgba(0, 0, 0, 0.6)",
+            color: "rgba(0, 0, 0, 0.87)",
           }}
         />
         {isOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
